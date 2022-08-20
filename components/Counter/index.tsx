@@ -29,7 +29,7 @@ const Counter = () => {
     () => {
       clearInterval(counterInterval);
     };
-  }, []);
+  }, [gameReady]);
 
   return (
     <div className="relative p-6">

@@ -1,11 +1,11 @@
 import { Dialog } from "@headlessui/react";
+import { useTranslation } from "next-i18next";
 
 import { useGameContext } from "../context/GameContext";
 import { GameState, Question, Status } from "../types";
 import BadgeCheck from "./icons/BadgeCheck";
 import CheckIcon from "./icons/CheckIcon copy";
 import MinusIcon from "./icons/MinusIcon";
-import { Letters } from "./Letter";
 import Modal from "./Modal";
 
 const Result = ({
@@ -44,15 +44,16 @@ const Result = ({
 );
 
 const GameResult = ({ onClose }: { onClose: () => void }) => {
-  const { duzzle, gameState } = useGameContext();
+  const { t } = useTranslation();
+  const { duzzle, gameState, letters } = useGameContext();
   if (gameState !== GameState.FINISHED) return null;
 
   const left = Array.from(
-    { length: Math.ceil(Letters.length / 2) },
+    { length: Math.ceil(letters.length / 2) },
     (_, i) => i * 1
   );
   const right = Array.from(
-    { length: Letters.length - left.length },
+    { length: letters.length - left.length },
     (_, i) => (i + left.length) * 1
   );
   return (
@@ -65,25 +66,25 @@ const GameResult = ({ onClose }: { onClose: () => void }) => {
           as="h3"
           className="text-lg leading-6 font-medium text-slate-700 dark:text-slate-100"
         >
-          Game result
+          {t("gameResult")}
         </Dialog.Title>
         <div className="mt-6">
           <div className="flex w-full text-left gap-4">
             <div className="w-1/2 text-left">
               {left.map((i) => (
                 <Result
-                  key={Letters[i]}
+                  key={letters[i]}
                   question={duzzle[i]}
-                  letter={Letters[i]}
+                  letter={letters[i]}
                 />
               ))}
             </div>
             <div className="w-1/2 text-left">
               {right.map((i) => (
                 <Result
-                  key={Letters[i]}
+                  key={letters[i]}
                   question={duzzle[i]}
-                  letter={Letters[i]}
+                  letter={letters[i]}
                 />
               ))}
             </div>

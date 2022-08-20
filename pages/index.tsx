@@ -1,11 +1,15 @@
-import { GetServerSideProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetServerSideProps, GetStaticProps } from "next";
+import { useState } from "react";
 import Game from "../components/Game";
 import GameFinished from "../components/GameFinished";
 import Intro from "../components/Intro";
 import Logo from "../components/Logo";
 import { Meta } from "../components/Meta";
 import GameContextProvider from "../context/GameContext";
+import { Locale } from "../types";
 
+const supportedLanguages = ["en", "tr"];
 const Home = ({ isMobile = false }: { isMobile: boolean }) => {
   return (
     <div className="bg-background dark:bg-slate-700 p-4 relative h-screen min-h-screen overflow-hidden flex flex-col justify-around">
@@ -31,6 +35,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
 
   return {
-    props: { isMobile },
+    props: {
+      isMobile,
+      ...(await serverSideTranslations(context.locale ?? "en", ["common"])),
+    },
   };
 };

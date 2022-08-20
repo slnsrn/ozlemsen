@@ -1,6 +1,8 @@
 import axios from "axios";
 import { startOfDay, isBefore } from "date-fns";
+import { useRouter } from "next/router";
 import PcgRandom from "pcg-random";
+import { tdk } from "sozluk-api";
 import {
   createContext,
   ReactNode,
@@ -13,28 +15,28 @@ import { Letters } from "../components/Letter";
 import { words } from "../data";
 import { defaultDuzzle } from "../data/defaultDuzzle";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { Duzzle, GameState, Status } from "../types";
+import { Duzzle, GameState, Status, Locale } from "../types";
 
 const today = new Date();
 const seed = today.getDate() + today.getMonth() + today.getFullYear();
 const rnd = new PcgRandom(seed);
 
-function makeState(): Duzzle {
-  return Letters.reduce((state, letter, i) => {
-    const word = words[i][Math.floor(rnd.number() * words[i].length)];
-    return {
-      ...state,
-      [i]: {
-        status: Status.INITIAL,
-        word: word,
-        definition: "",
-        placeholder: `${letter} ${
-          Array.from({ length: word.length - 1 }, (_) => "X").join
-        }`,
-      },
-    };
-  }, {} as Duzzle);
-}
+// function makeState(): Duzzle {
+//   return Letters.reduce((state, letter, i) => {
+//     const word = words[i][Math.floor(rnd.number() * words[i].length)];
+//     return {
+//       ...state,
+//       [i]: {
+//         status: Status.INITIAL,
+//         word: word,
+//         definition: "",
+//         placeholder: `${letter} ${
+//           Array.from({ length: word.length - 1 }, (_) => "X").join
+//         }`,
+//       },
+//     };
+//   }, {} as Duzzle);
+// }
 
 type Context = {
   duzzle: Duzzle;
@@ -44,6 +46,7 @@ type Context = {
   gameReady: () => void;
   setDuzzle: (duzzle: Duzzle) => void;
   isMobile: boolean;
+  letters: string[];
 };
 
 export const GameContext = createContext<Context>(null!);
@@ -65,6 +68,9 @@ const GameContextProvider = ({
     null
   );
   const [gameState, setGameState] = useState<GameState>(GameState.READY);
+  const router = useRouter();
+  const language = router.locale as Locale;
+  const letters = Letters[language];
 
   const setWord = (
     response: any,
@@ -88,14 +94,50 @@ const GameContextProvider = ({
     }));
   };
 
+  const setTRWord = (
+    response: any,
+    index: number,
+    letter: string,
+    word: string
+  ) => {
+    const data = response.data ?? [];
+    setDuzzle((current) => ({
+      ...current,
+      [index]: {
+        status: Status.INITIAL,
+        word: word,
+        definition: response.anlam,
+        placeholder: `${letter} ${Array.from(
+          { length: word.length - 1 },
+          (_) => "X"
+        ).join(" ")}`,
+      },
+    }));
+  };
+
   function getDefinition(letter: string, index: number) {
-    const word = words[index][Math.floor(rnd.number() * words[index].length)];
+    const word =
+      words[language][index][
+        Math.floor(rnd.number() * words[language][index].length)
+      ];
+    if (language === "tr") {
+      return new Promise((resolve, reject) => {
+        tdk(word)
+          .then((response: { anlam: string }) =>
+            setTRWord(response, index, letter, word)
+          )
+          .catch(() => {
+            console.log(`${letters[index]} skipped: ${word}`);
+            getDefinition(letter, index);
+          });
+      });
+    }
     return new Promise((resolve, reject) => {
       axios
         .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
         .then((response) => setWord(response, index, letter, word))
         .catch((err) => {
-          console.log(`${Letters[index]} skipped: ${word}`);
+          console.log(`${letters[index]} skipped: ${word}`);
           getDefinition(letter, index);
         });
     });
@@ -109,8 +151,7 @@ const GameContextProvider = ({
 
     if (showNewGame) {
       setGameState(GameState.READY);
-
-      Promise.all(Letters.map((letter, i) => getDefinition(letter, i)));
+      Promise.all(letters.map((letter, i) => getDefinition(letter, i)));
       localStorage.clear();
     } else {
       setGameState(GameState.FINISHED);
@@ -139,6 +180,7 @@ const GameContextProvider = ({
         setDuzzle,
         isMobile,
         gameReady: setGameReady,
+        letters: Letters[language],
       }}
     >
       {children}

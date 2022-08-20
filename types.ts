@@ -22,3 +22,5 @@ export enum GameState {
   "STARTED",
   "FINISHED",
 }
+
+export type Locale = "en" | "tr";

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useGameContext } from "../../context/GameContext";
 import { GameState } from "../../types";
 

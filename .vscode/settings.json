@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "duzzle"
+    ],
+    "i18n-ally.localesPaths": [
+        "public/locales"
     ]
 }

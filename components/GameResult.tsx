@@ -69,8 +69,8 @@ const GameResult = ({ onClose }: { onClose: () => void }) => {
           {t("gameResult")}
         </Dialog.Title>
         <div className="mt-6">
-          <div className="flex w-full text-left gap-4">
-            <div className="w-1/2 text-left">
+          <div className="flex flex-col sm:flex-row w-full text-left gap-4">
+            <div className=" w-full sm:w-1/2 text-left">
               {left.map((i) => (
                 <Result
                   key={letters[i]}
@@ -79,7 +79,7 @@ const GameResult = ({ onClose }: { onClose: () => void }) => {
                 />
               ))}
             </div>
-            <div className="w-1/2 text-left">
+            <div className="w-full sm:w-1/2 text-left">
               {right.map((i) => (
                 <Result
                   key={letters[i]}

@@ -1,12 +1,12 @@
 {
   "introTitle": "A new puzzle everyday!",
-  "introText": "Try to guess the word for each letter of the alphabet. If you skip a letter, you can still come back. You have 3 minutes! Good luck!",
+  "introText": "Try to guess the word for each letter of the alphabet. If you skip a letter, you can still come back. You have 5 minutes! Good luck!",
   "start": "Start",
   "language": "language",
   "writeYourAnswer": "write your answer",
   "pass": "skip",
   "answer": "answer",
-  "showResults": "Show results",
+  "showResults": "Results",
   "nextGameIn": "Next game in",
   "gameResult": "Game results"
 }

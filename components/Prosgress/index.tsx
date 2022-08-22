@@ -2,14 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { useGameContext } from "../../context/GameContext";
 import { GameState } from "../../types";
 
+const GAME_TIME = 300;
+
 const Timer = () => {
-  const [seconds, setSeconds] = useState(180);
-  const { finishGame, gameState, isMobile, duzzle } = useGameContext();
+  const [seconds, setSeconds] = useState(GAME_TIME);
+  const { finishGame, gameState, isMobile } = useGameContext();
   const r = isMobile ? 30 : 40;
   const circle = Math.PI * r * 2;
 
   useEffect(() => {
-    let s = 180;
+    let s = GAME_TIME;
     const counterInterval = setInterval(() => {
       if (s === 0) {
         clearInterval(counterInterval);
@@ -60,7 +62,7 @@ const Timer = () => {
             fill="none"
             strokeWidth={isMobile ? 6 : 8}
             strokeDasharray={circle}
-            strokeDashoffset={-circle * ((180 - seconds) / 180)}
+            strokeDashoffset={-circle * ((GAME_TIME - seconds) / GAME_TIME)}
             stroke={seconds < 30 ? "#f87171" : "#475569"}
             style={{
               transform: "rotate(-90deg)",

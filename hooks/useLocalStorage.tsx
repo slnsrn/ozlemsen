@@ -12,7 +12,6 @@ function useLocalStorage(key: string, initialValue: unknown) {
     }
   });
   const setStoredValue = (value: unknown) => {
-    console.log(new Date().toLocaleTimeString(), value);
     try {
       /**
        * @note

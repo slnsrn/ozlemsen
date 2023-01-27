@@ -1,25 +1,20 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { GetServerSideProps, GetStaticProps } from "next";
-import { useState } from "react";
-import Game from "../components/Game";
-import GameFinished from "../components/GameFinished";
-import Intro from "../components/Intro";
-import Logo from "../components/Logo";
+import { GetServerSideProps } from "next";
+import { Hero } from "../components/Hero";
+import { Layout } from "../components/Layout";
 import { Meta } from "../components/Meta";
-import GameContextProvider from "../context/GameContext";
-import { Locale } from "../types";
+import Services from "../components/Services";
+import { UnderMaintenance } from "../components/UnderMaintenance";
 
-const supportedLanguages = ["en", "tr"];
+const supportedLanguages = ["en", "de"];
 const Home = ({ isMobile = false }: { isMobile: boolean }) => {
   return (
-    <div className="bg-background dark:bg-slate-700 p-4 relative h-screen min-h-screen overflow-hidden flex flex-col justify-around">
-      <Meta />
-      <Logo isMobile={isMobile} />
-      <GameContextProvider isMobile={isMobile}>
-        <Intro />
-        <Game />
-        <GameFinished />
-      </GameContextProvider>
+    <div>
+      {/* <Meta />
+      <Layout>
+        <Hero />
+        <Services />
+      </Layout> */}
+      <UnderMaintenance />
     </div>
   );
 };
@@ -37,7 +32,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       isMobile,
-      ...(await serverSideTranslations(context.locale ?? "en", ["common"])),
     },
   };
 };

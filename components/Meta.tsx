@@ -3,7 +3,7 @@ import Head from "next/head";
 export function Meta() {
   return (
     <Head>
-      <title>Duzzle</title>
+      <title>Özlem Şen Kreativ Agency</title>
       <meta name="description" content="Your daily puzzle" />
       <link rel="icon" href="/favicon.ico" />
       <link
@@ -24,9 +24,9 @@ export function Meta() {
         href="/favicon-16x16.png"
       />
       <link rel="manifest" href="/site.webmanifest" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
       <meta name="msapplication-TileColor" content="#da532c" />
-      <meta name="theme-color" content="#ffffff"></meta>
+      <meta name="theme-color" content="#ffffff" />
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     </Head>
   );
 }

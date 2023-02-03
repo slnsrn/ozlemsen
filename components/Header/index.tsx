@@ -1,6 +1,8 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   return (
@@ -8,10 +10,15 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
-              <span className="sr-only">Your Company</span>
-              <img className="h-8 w-auto sm:h-10" src="/os-logo.png" alt="" />
-            </a>
+            <Link href="/" passHref>
+              <span className="sr-only">OzlemSen.creativeAgency</span>
+              <Image
+                src="/logo/logo.png"
+                alt=""
+                width={160}
+                height={40}
+              ></Image>
+            </Link>
           </div>
           <div className="-my-2 -mr-2 md:hidden">
             <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -19,24 +26,24 @@ export default function Header() {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
           </div>
-          <a
-            href="#"
+          <Link
+            href="/services"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
-            Services
-          </a>
-          <a
-            href="#"
+            Leistungen
+          </Link>
+          <Link
+            href="/about"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
             Uber uns
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/contact"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
-            Contact
-          </a>
+            Kontakt
+          </Link>
         </div>
       </div>
 

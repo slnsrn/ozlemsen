@@ -1,4 +1,5 @@
-import { TextLoop } from "react-text-loop-next";
+import TextLoop from "react-text-loop";
+
 const Hero = () => (
   <div className="bg-gray-100 pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14 designer-portfolio flex">
     <div className="mx-auto w-full max-w-7xl lg:px-8 self-center">
@@ -14,10 +15,10 @@ const Hero = () => (
               Hi, ich bin Ozlem Sen
               <br />
               <TextLoop>
-                <span> Animal lover.</span>
-                <span> UI Designer.</span>
-                <span> Content Writer.</span>
-              </TextLoop>{" "}
+                <span>Trade faster</span>
+                <span>Increase sales</span>
+                <span>Stock winners</span>
+              </TextLoop>
             </h1>
             <h2>based in USA.</h2>
           </div>

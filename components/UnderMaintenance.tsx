@@ -12,7 +12,7 @@ export const UnderMaintenance = () => {
             width={500}
             height={200}
           />
-          <h3 className="text-xl md:text-4xl text-teal-800 -mt-8">
+          <h3 className="mt-10 text-xl md:text-4xl text-teal-800">
             Coming Soon
           </h3>
 

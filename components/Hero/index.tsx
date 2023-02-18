@@ -1,4 +1,4 @@
-import TextLoop from "react-text-loop";
+import { TextLoop } from "react-text-loop-next";
 
 const Hero = () => (
   <div className="bg-gray-100 pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14 designer-portfolio flex">

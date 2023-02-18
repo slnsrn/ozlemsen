@@ -1,189 +1,78 @@
-import {
-  LifebuoyIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  CheckIcon,
-} from "@heroicons/react/24/outline";
 import { Layout } from "../components/Layout";
+import { ServiceSection } from "../components/Services/ServiceSection";
 
-const supportLinks = [
+const services = [
   {
-    name: "Basic",
-    href: "#",
-    description:
-      "Postproduktion (Schnitt, Ton, Farbkorrektur, Musik, End Card)",
-    icon: PhoneIcon,
+    title: "Videoproduktion",
+    background: "/images/services/video-production.jpg",
+    text: "Sie brauchen einen Unternehmensfilm? Ihr nächstes Event soll für die Nachwelt festgehalten werden? Oder haben Sie bereits Material und suchen jemanden für den Feinschliff? Als professionelle Videografen übernehmen wir vom Script bis zur Postproduction den kompletten Produktionsprozess.",
+    offers: {
+      basic: ["Postproduktion (Schnitt, Ton, Farbkorrektur, Musik, End Card)"],
+      standart: ["Shooting", "Postproduktion"],
+      premium: [
+        "Konzept",
+        "Shooting",
+        "Postproduktion (inkl. visuelle Effekte, Voice-Over, Untertitel, Musik)",
+      ],
+    },
   },
   {
-    name: "Standart",
-    href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: LifebuoyIcon,
-  },
-  {
-    name: "Premium",
-    href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: NewspaperIcon,
-  },
-];
-
-const videoProduction = {
-  tiers: [
-    {
-      title: "Basic",
-      price: 24,
-      frequency: "/month",
-      description: "The essentials to provide your best work for clients.",
-      features: [
-        "5 products",
-        "Up to 1,000 subscribers",
-        "Basic analytics",
-        "48-hour support response time",
-      ],
-      cta: "Monthly billing",
-      mostPopular: false,
-    },
-    {
-      title: "Standart",
-      price: 32,
-      frequency: "/month",
-      description: "A plan that scales with your rapidly growing business.",
-      features: [
-        "25 products",
-        "Up to 10,000 subscribers",
-        "Advanced analytics",
-        "24-hour support response time",
-        "Marketing automations",
-      ],
-      cta: "Monthly billing",
-      mostPopular: true,
-    },
-    {
-      title: "Premium",
-      price: 48,
-      frequency: "/month",
-      description: "Dedicated support and infrastructure for your company.",
-      features: [
-        "Unlimited products",
-        "Unlimited subscribers",
-        "Advanced analytics",
-        "1-hour, dedicated support response time",
-        "Marketing automations",
-        "Custom integrations",
-      ],
-      cta: "Monthly billing",
-      mostPopular: false,
-    },
-  ],
-};
-const social = {
-  tiers: [
-    {
-      title: "Basic",
-      price: 24,
-      frequency: "/month",
-      description: "The essentials to provide your best work for clients.",
-      features: [
+    title: "Social Media",
+    background: "/images/services/social-media.jpg",
+    text: "Keine Zeit zum Posten? Ob Instagram, LinkedIn oder TikTok: Wir halten Ihre Followers auf dem Laufenden und etablieren Ihre Marke nachhaltig auf Social Media – damit Sie immer in Verbindung bleiben.",
+    offers: {
+      basic: [
         "Themenrecherche",
         "Texterstellung",
-        "1 Tag Photoshoot oder Bildrecherche und Bearbeitung",
         "inkl. Beitragsoptimierung mittels Link, Keyword und Hashtag",
         "inkl. Antworten auf Beitragsreaktionen",
         "Social Media Strategie",
+        "1 Tag Photoshoot oder Bildrecherche und Bearbeitung",
         "2 Posts pro Woche",
         "2 Stories pro Woche",
       ],
-      cta: "Monthly billing",
-      mostPopular: false,
-    },
-    {
-      title: "Standart",
-      price: 32,
-      frequency: "/month",
-      description: "A plan that scales with your rapidly growing business.",
-      features: [
-        "Themenrecherche",
-        "Texterstellung",
+      standart: [
+        "Basic Plus",
         "2 Tag Photoshoot oder Bildrecherche und Bearbeitung",
-        "inkl. Beitragsoptimierung mittels Link, Keyword und Hashtag",
-        "inkl. Antworten auf Beitragsreaktionen",
-        "Social Media Strategie",
         "3 Posts pro Woche",
         "3 Stories pro Woche",
       ],
-      cta: "Monthly billing",
-      mostPopular: true,
-    },
-    {
-      title: "Premium",
-      price: 48,
-      frequency: "/month",
-      description: "Dedicated support and infrastructure for your company.",
-      features: [
-        "Themenrecherche",
-        "Texterstellung",
+      premium: [
+        "Basic Plus",
         "3 Tag Photoshoot oder Bildrecherche und Bearbeitung",
-        "inkl. Beitragsoptimierung mittels Link, Keyword und Hashtag",
-        "inkl. Antworten auf Beitragsreaktionen",
-        "Social Media Strategie",
         "5 Posts pro Woche",
         "5 Stories pro Woche",
         "Community Management",
       ],
-      cta: "Monthly billing",
-      mostPopular: false,
     },
-  ],
-};
-const branding = [
-  {
-    title: "Basic",
-    featured: false,
-    description: "All your essential business finances, taken care of.",
-    priceMonthly: 5,
-    priceYearly: 56,
-    mainFeatures: [
-      { id: 1, value: "Basic invoicing" },
-      { id: 2, value: "Easy to use accounting" },
-      { id: 3, value: "Mutli-accounts" },
-    ],
   },
   {
-    title: "Standart",
-    featured: true,
-    description: "The best financial services for your thriving business.",
-    priceMonthly: 19,
-    priceYearly: 220,
-    mainFeatures: [
-      { id: 1, value: "Advanced invoicing" },
-      { id: 2, value: "Easy to use accounting" },
-      { id: 3, value: "Mutli-accounts" },
-      { id: 4, value: "Tax planning toolkit" },
-      { id: 5, value: "VAT & VATMOSS filing" },
-      { id: 6, value: "Free bank transfers" },
-    ],
-  },
-  {
-    title: "Premium",
-    featured: false,
-    description: "Convenient features to take your business to the next level.",
-    priceMonthly: 12,
-    priceYearly: 140,
-    mainFeatures: [
-      { id: 1, value: "Basic invoicing" },
-      { id: 2, value: "Easy to use accounting" },
-      { id: 3, value: "Mutli-accounts" },
-      { id: 4, value: "Tax planning toolkit" },
-    ],
+    title: "Branding/Corporate Design",
+    background: "/images/services/branding.jpg",
+    text: "Kleidung macht bekanntlich Leute. Wir stellen sicher, dass Ihr Unternehmen das richtige Outfit trägt. Vom Logo bis zur Visitenkarte – lassen Sie uns auf einen Blick vermitteln, warum Ihre Marke einzigartig ist!",
+    offers: {
+      basic: ["Logo Design", "Visitenkarte"],
+      standart: ["Logo Design", "Visitenkarte", "Badges", "Mockups"],
+      premium: [
+        "Konzept (Corporate Identity / Rebranding)",
+        "Logo Design",
+        "Visitenkarte",
+        "Visitenkarte Premium Drucken",
+        "Badges",
+        "Mockups",
+        "Außenwerbung",
+        "Laden/Shop Konzept Design",
+      ],
+    },
   },
 ];
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(" ");
-// }
 
 export default function Services() {
-  return <Layout></Layout>;
+  return (
+    <Layout>
+      {services.map((service, i) => (
+        <ServiceSection key={service.title} {...service} index={i} />
+      ))}
+    </Layout>
+  );
 }

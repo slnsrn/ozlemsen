@@ -2,7 +2,7 @@ const blogPosts = [
   {
     id: 1,
     title: "Videoproduktion",
-    href: "#",
+    href: "/services#videoproduktion",
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
     category: { name: "Kreativ", href: "#" },
@@ -14,7 +14,7 @@ const blogPosts = [
   {
     id: 2,
     title: "Social Media",
-    href: "#",
+    href: "/services#social-media",
     date: "Mar 10, 2020",
     datetime: "2020-03-10",
     category: { name: "Management", href: "#" },
@@ -26,7 +26,7 @@ const blogPosts = [
   {
     id: 3,
     title: "Branding",
-    href: "#",
+    href: "/services#branding",
     date: "Feb 12, 2020",
     datetime: "2020-02-12",
     category: { name: "Design", href: "#" },

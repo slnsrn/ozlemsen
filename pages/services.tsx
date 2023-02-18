@@ -3,6 +3,7 @@ import { ServiceSection } from "../components/Services/ServiceSection";
 
 const services = [
   {
+    id: "video-production",
     title: "Videoproduktion",
     background: "/images/services/video-production.jpg",
     text: "Sie brauchen einen Unternehmensfilm? Ihr nächstes Event soll für die Nachwelt festgehalten werden? Oder haben Sie bereits Material und suchen jemanden für den Feinschliff? Als professionelle Videografen übernehmen wir vom Script bis zur Postproduction den kompletten Produktionsprozess.",
@@ -17,6 +18,7 @@ const services = [
     },
   },
   {
+    id: "social-media",
     title: "Social Media",
     background: "/images/services/social-media.jpg",
     text: "Keine Zeit zum Posten? Ob Instagram, LinkedIn oder TikTok: Wir halten Ihre Followers auf dem Laufenden und etablieren Ihre Marke nachhaltig auf Social Media – damit Sie immer in Verbindung bleiben.",
@@ -47,6 +49,7 @@ const services = [
     },
   },
   {
+    id: "branding",
     title: "Branding/Corporate Design",
     background: "/images/services/branding.jpg",
     text: "Kleidung macht bekanntlich Leute. Wir stellen sicher, dass Ihr Unternehmen das richtige Outfit trägt. Vom Logo bis zur Visitenkarte – lassen Sie uns auf einen Blick vermitteln, warum Ihre Marke einzigartig ist!",
@@ -71,7 +74,7 @@ export default function Services() {
   return (
     <Layout>
       {services.map((service, i) => (
-        <ServiceSection key={service.title} {...service} index={i} />
+        <ServiceSection key={service.id} {...service} />
       ))}
     </Layout>
   );

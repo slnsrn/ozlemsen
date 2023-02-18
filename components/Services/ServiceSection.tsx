@@ -13,18 +13,19 @@ export const ServiceSection = ({
   text,
   background,
   offers,
-  index,
+  id,
 }: {
   title: string;
   text: string;
   background: string;
   offers: Record<keyof typeof packageNames, string[]>;
-  index: number;
+  id: string;
 }) => {
   const { wHeight, wWidth } = useAppSizeConfig();
 
   return (
     <section
+      id={id}
       style={{ height: wWidth < 600 ? "auto" : wHeight }}
       className="pb-8"
     >

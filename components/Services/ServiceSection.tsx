@@ -25,7 +25,7 @@ export const ServiceSection = ({
   return (
     <section
       id={id}
-      style={{ height: wWidth ?? 600 < 600 ? "auto" : wHeight }}
+      style={{ height: wWidth < 600 ? "auto" : wHeight }}
       className="pb-8"
     >
       <div className="relative bg-white flex lg:h-5/6">

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 type Size = {
-  wWidth: number | undefined;
-  wHeight: number | undefined;
+  wWidth: number;
+  wHeight: number;
   headerHeight: number;
   footerHeight: number;
 };
@@ -11,8 +11,8 @@ export const useAppSizeConfig = (): Size => {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
   const [windowSize, setWindowSize] = useState<Size>({
-    wWidth: undefined,
-    wHeight: undefined,
+    wWidth: 601,
+    wHeight: 601,
     headerHeight: 100,
     footerHeight: 100,
   });

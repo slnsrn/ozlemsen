@@ -8,10 +8,7 @@ export default function About() {
     <Layout>
       <section
         style={{
-          height:
-            wWidth ?? 600 < 600
-              ? "auto"
-              : wHeight ?? 0 - footerHeight - headerHeight,
+          height: wWidth < 600 ? "auto" : wHeight - footerHeight - headerHeight,
         }}
         className="pb-8"
       >
@@ -59,7 +56,13 @@ export default function About() {
               <div className="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:max-w-none lg:px-0 lg:py-20 h-full">
                 {/* Testimonial card*/}
                 <div className="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl h-full">
-                  <Image src="/images/ozlem-sen.jpg" alt="" fill />
+                  <Image
+                    className="absolute inset-0 h-full w-full object-cover"
+                    src="/images/ozlem-sen.jpg"
+                    alt=""
+                    width={1000}
+                    height={1000}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-r from-stone-100 to-stone-300 opacity-40" />
                 </div>
               </div>

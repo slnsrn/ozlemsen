@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { services } from "../../pages/services";
 
 export default function Services() {
@@ -20,7 +21,7 @@ export default function Services() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="flex flex-col overflow-hidden rounded-lg shadow-lg"
+              className="flex flex-col overflow-hidden rounded-lg shadow-lg cursor-pointer  bg-white"
             >
               <div className="flex-shrink-0">
                 <Image
@@ -31,22 +32,26 @@ export default function Services() {
                   width={100}
                 />
               </div>
-              <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-cyan-600">
-                    <a
-                      href={`/services/${service.id}`}
-                      className="hover:underline"
-                    >
+              <Link href={`/services/#${service.id}`}>
+                <div className="flex flex-1 flex-col justify-between bg-white p-6">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-cyan-600">
+                      <a
+                        href={`/services/${service.id}`}
+                        className="hover:underline"
+                      >
+                        {service.title}
+                      </a>
+                    </p>
+                    <p className="text-xl font-semibold text-gray-900">
                       {service.title}
-                    </a>
-                  </p>
-                  <p className="text-xl font-semibold text-gray-900">
-                    {service.title}
-                  </p>
-                  <p className="mt-3 text-base text-gray-500">{service.text}</p>
+                    </p>
+                    <p className="mt-3 text-base text-gray-500">
+                      {service.text}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>

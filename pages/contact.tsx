@@ -9,7 +9,10 @@ export default function Contact() {
     <Layout>
       <section
         style={{
-          height: wWidth < 600 ? "auto" : wHeight - footerHeight - headerHeight,
+          height:
+            wWidth ?? 600 < 600
+              ? "auto"
+              : wHeight ?? 0 - footerHeight - headerHeight,
         }}
         className="pb-8"
       >

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { useAppSizeConfig } from "../../hooks/useAppSizeConfig";
 
 const packageNames = {
@@ -26,7 +25,7 @@ export const ServiceSection = ({
   return (
     <section
       id={id}
-      style={{ height: wWidth < 600 ? "auto" : wHeight }}
+      style={{ height: wWidth ?? 600 < 600 ? "auto" : wHeight }}
       className="pb-8"
     >
       <div className="relative bg-white flex lg:h-5/6">
@@ -91,12 +90,14 @@ export const ServiceSection = ({
               <div className="mt-4 space-y-6 text-gray-500">
                 <p className="text-lg">{text}</p>
                 <div className="space-y-4">
-                  {Object.keys(offers).map((p, i) => (
+                  {["basic", "standart", "premium"].map((p, i) => (
                     <div key={i} className="text-left">
-                      <h6 className="font-bold">{packageNames[p]}</h6>
+                      <h6 className="font-bold">
+                        {packageNames[p as "basic"]}
+                      </h6>
                       <ol>
-                        {offers[p].map((item) => (
-                          <li>{item}</li>
+                        {offers[p as "basic"].map((item, i) => (
+                          <li key={i}>{item}</li>
                         ))}
                       </ol>
                     </div>

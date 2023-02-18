@@ -1,41 +1,6 @@
-const blogPosts = [
-  {
-    id: 1,
-    title: "Videoproduktion",
-    href: "/services#videoproduktion",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { name: "Kreativ", href: "#" },
-    imageUrl:
-      "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
-    preview:
-      "Sie brauchen einen Unternehmensfilm? Ihr nächstes Event soll für die Nachwelt festgehalten werden? Oder haben Sie bereits Material und suchen jemanden für den Feinschliff? Als professionelle Videografen übernehmen wir vom Script bis zur Postproduction den kompletten Produktionsprozess.",
-  },
-  {
-    id: 2,
-    title: "Social Media",
-    href: "/services#social-media",
-    date: "Mar 10, 2020",
-    datetime: "2020-03-10",
-    category: { name: "Management", href: "#" },
-    imageUrl:
-      "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
-    preview:
-      "Keine Zeit zum Posten? Ob Instagram, LinkedIn oder TikTok: Wir halten Ihre Followers auf dem Laufenden und etablieren Ihre Marke nachhaltig auf Social Media – damit Sie immer in Verbindung bleiben. ",
-  },
-  {
-    id: 3,
-    title: "Branding",
-    href: "/services#branding",
-    date: "Feb 12, 2020",
-    datetime: "2020-02-12",
-    category: { name: "Design", href: "#" },
-    imageUrl:
-      "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
-    preview:
-      "Kleidung macht bekanntlich Leute. Wir stellen sicher, dass Ihr Unternehmen das richtige Outfit trägt. Vom Logo bis zur Visitenkarte – lassen Sie uns auf einen Blick vermitteln, warum Ihre Marke einzigartig ist!",
-  },
-];
+import Image from "next/image";
+import { services } from "../../pages/services";
+
 export default function Services() {
   return (
     <div className="relative bg-gray-50 py-16 sm:py-24 lg:py-32">
@@ -52,33 +17,34 @@ export default function Services() {
           </p>
         </div>
         <div className="mx-auto mt-12 grid max-w-md gap-8 px-4 sm:max-w-lg sm:px-6 lg:max-w-7xl lg:grid-cols-3 lg:px-8">
-          {blogPosts.map((post) => (
+          {services.map((service) => (
             <div
-              key={post.id}
+              key={service.id}
               className="flex flex-col overflow-hidden rounded-lg shadow-lg"
             >
               <div className="flex-shrink-0">
-                <img
+                <Image
                   className="h-48 w-full object-cover"
-                  src={post.imageUrl}
-                  alt=""
+                  src={service.background}
+                  alt={service.title}
+                  height={192}
+                  width={100}
                 />
               </div>
               <div className="flex flex-1 flex-col justify-between bg-white p-6">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-cyan-600">
-                    <a href={post.category.href} className="hover:underline">
-                      {post.category.name}
+                    <a
+                      href={`/services/${service.id}`}
+                      className="hover:underline"
+                    >
+                      {service.title}
                     </a>
                   </p>
-                  <a href={post.href} className="mt-2 block">
-                    <p className="text-xl font-semibold text-gray-900">
-                      {post.title}
-                    </p>
-                    <p className="mt-3 text-base text-gray-500">
-                      {post.preview}
-                    </p>
-                  </a>
+                  <p className="text-xl font-semibold text-gray-900">
+                    {service.title}
+                  </p>
+                  <p className="mt-3 text-base text-gray-500">{service.text}</p>
                 </div>
               </div>
             </div>

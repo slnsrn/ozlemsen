@@ -1,7 +1,7 @@
 import { Layout } from "../components/Layout";
 import { ServiceSection } from "../components/Services/ServiceSection";
 
-const services = [
+export const services = [
   {
     id: "video-production",
     title: "Videoproduktion",

@@ -1,4 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
+
 import { useAppSizeConfig } from "../../hooks/useAppSizeConfig";
 
 const packageNames = {
@@ -92,9 +95,18 @@ export const ServiceSection = ({
                 <div className="space-y-4">
                   {["basic", "standart", "premium"].map((p, i) => (
                     <div key={i} className="text-left">
-                      <h6 className="font-bold">
-                        {packageNames[p as "basic"]}
-                      </h6>
+                      <Link
+                        href={{
+                          pathname: "/contact",
+                          query: { product: id, package: p },
+                        }}
+                        className="flex space-x-2 items-center"
+                      >
+                        <h6 className="font-bold">
+                          {packageNames[p as "basic"]}
+                        </h6>
+                        <ChevronDoubleRightIcon className="h-4 self-center" />
+                      </Link>
                       <ol>
                         {offers[p as "basic"].map((item, i) => (
                           <li key={i}>{item}</li>

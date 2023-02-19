@@ -40,7 +40,7 @@ export default function Services() {
                         href={`/services/${service.id}`}
                         className="hover:underline"
                       >
-                        {service.title}
+                        {service.category}
                       </a>
                     </p>
                     <p className="text-xl font-semibold text-gray-900">

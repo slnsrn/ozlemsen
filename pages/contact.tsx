@@ -1,15 +1,12 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import {
-  Bars3Icon,
-  EnvelopeIcon,
-  PhoneIcon,
-} from "@heroicons/react/24/outline";
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 
 import { Layout } from "../components/Layout";
 import { useAppSizeConfig } from "../hooks/useAppSizeConfig";
 import Image from "next/image";
 import { navigation } from "../components/Social";
+import Link from "next/link";
 
 type FormValues = {
   name: string;
@@ -30,9 +27,8 @@ const initialValues = {
 };
 
 export default function Contact() {
-  const [agreed, setAgreed] = useState(false);
   const [formValues, setFormValues] = useState<FormValues>(initialValues);
-  const { wHeight, wWidth, footerHeight, headerHeight } = useAppSizeConfig();
+  const { wHeight, wWidth, headerHeight } = useAppSizeConfig();
   const router = useRouter();
 
   useEffect(() => {
@@ -107,28 +103,37 @@ export default function Contact() {
                   <h2 className="text-2xl font-bold tracking-tight text-gray-700">
                     Wir nehmen uns die Zeit. Rufen Sie an oder schreiben Sie uns
                   </h2>
-                  <dl className="mt-8 space-y-6  text-gray-700">
-                    <dt>
-                      <span className="sr-only">Phone number</span>
-                    </dt>
-                    <dd className="flex text-base">
-                      <PhoneIcon
-                        className="h-6 w-6 flex-shrink-0"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-3">+1 (555) 123-4567</span>
-                    </dd>
-                    <dt>
-                      <span className="sr-only">Email</span>
-                    </dt>
-                    <dd className="flex text-base">
-                      <EnvelopeIcon
-                        className="h-6 w-6 flex-shrink-0"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-3">support@workcation.com</span>
-                    </dd>
-                  </dl>
+                  <div className="mt-8 text-gray-500">
+                    <Link href="tel:+491778094979" className="hover:underline ">
+                      <>
+                        <span className="sr-only">Phone number</span>
+                        <span className="flex text-base">
+                          <PhoneIcon
+                            className="h-6 w-6 flex-shrink-0"
+                            aria-hidden="true"
+                          />
+                          <span className="ml-3"> +49 177 809 49 79</span>
+                        </span>
+                      </>
+                    </Link>
+                    <Link
+                      className="hover:underline "
+                      href="mailto:benozlemsen@gmail.com"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <>
+                        <span className="sr-only">Email</span>
+                        <span className="mt-6 flex text-base">
+                          <EnvelopeIcon
+                            className="h-6 w-6 flex-shrink-0"
+                            aria-hidden="true"
+                          />
+                          <span className="ml-3">benozlemsen@gmail.com</span>
+                        </span>
+                      </>
+                    </Link>
+                  </div>
                   <div className="flex space-x-6 mt-8">
                     {navigation.map((item) => (
                       <a

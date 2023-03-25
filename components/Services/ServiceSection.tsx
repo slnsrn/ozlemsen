@@ -31,7 +31,7 @@ export const ServiceSection = ({
       style={{ height: wWidth < 600 ? "auto" : wHeight }}
       className="pb-8"
     >
-      <div className="relative bg-white flex lg:h-5/6">
+      <div className="relative bg-white flex lg:h-5/6 ">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center">
           <div className="relative w-full sm:py-16 lg:py-0 h-full">
             <div
@@ -86,7 +86,7 @@ export const ServiceSection = ({
 
           <div className="relative h-full mx-auto max-w-md px-6 sm:max-w-3xl lg:px-0 flex">
             {/* Content area */}
-            <div className="self-center flex-col w-full pt-8 lg:pt-0 text-center lg:text-left">
+            <div className="flex-col w-full pt-6 lg:pt-0 text-center lg:text-left">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 {title}
               </h2>

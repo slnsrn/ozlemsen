@@ -4,7 +4,6 @@ import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 
 import { Layout } from "../components/Layout";
 import { useAppSizeConfig } from "../hooks/useAppSizeConfig";
-import Image from "next/image";
 import { navigation } from "../components/Social";
 import Link from "next/link";
 
@@ -154,15 +153,11 @@ export default function Contact() {
 
             <div className="relative max-w-md px-6 sm:max-w-3xl lg:px-0">
               {/* Content area */}
-              <div className="pt-12">
+              <div className="pt-6 lg:pt-0">
                 <h3 className="text-lg font-medium text-gray-500 text-center">
                   Kontakt Formular
                 </h3>
-                <form
-                  action="#"
-                  method="POST"
-                  className="space-y-4 sm:space-y-8 mt-4"
-                >
+                <form action="#" method="POST" className="space-y-4 mt-4">
                   <div>
                     <label
                       htmlFor="name"

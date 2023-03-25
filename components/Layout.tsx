@@ -13,6 +13,7 @@ export const Layout: React.FC<
         style={{
           height: fullScreen ? wHeight : "auto",
           paddingBottom: footerHeight,
+          paddingTop: 100,
         }}
       >
         {children}

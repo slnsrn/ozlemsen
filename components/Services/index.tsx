@@ -23,16 +23,16 @@ export default function Services() {
               key={service.id}
               className="flex flex-col overflow-hidden rounded-lg shadow-lg cursor-pointer  bg-white"
             >
-              <div className="flex-shrink-0">
-                <Image
-                  className="h-48 w-full object-cover"
-                  src={service.background}
-                  alt={service.title}
-                  height={192}
-                  width={100}
-                />
-              </div>
               <Link href={`/services/#${service.id}`}>
+                <div className="flex-shrink-0">
+                  <Image
+                    className="h-48 w-full object-cover"
+                    src={service.background}
+                    alt={service.title}
+                    height={1000}
+                    width={1000}
+                  />
+                </div>
                 <div className="flex flex-1 flex-col justify-between bg-white p-6">
                   <div className="flex-1">
                     <p className="text-sm font-medium text-cyan-600">

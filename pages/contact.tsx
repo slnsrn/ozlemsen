@@ -5,7 +5,7 @@ import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { Layout } from "../components/Layout";
 import { navigation } from "../components/Social";
 import Link from "next/link";
-import { Formik, Form, Field } from "formik";
+// import { Formik, Form, Field } from "formik";
 
 import { object, string } from "yup";
 
@@ -78,7 +78,8 @@ export default function Contact() {
     <Layout>
       <section>
         <div className="mt-6 relative bg-white flex lg:h-5/6">
-          <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center">
+          {/* <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center"> */}
+          <div className="lg:mx-auto lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center">
             <div className="relative sm:py-16 lg:py-0 h-full">
               <div
                 aria-hidden="true"
@@ -182,8 +183,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="relative max-w-md px-6 sm:max-w-3xl lg:px-0">
-              {/* Content area */}
+            {/* <div className="relative max-w-md px-6 sm:max-w-3xl lg:px-0">
               <div className="pt-6 lg:pt-0">
                 <h3 className="text-lg font-medium text-gray-500 text-center">
                   Kontakt Formular
@@ -301,7 +301,7 @@ export default function Contact() {
                   )}
                 </Formik>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

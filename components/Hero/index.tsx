@@ -3,9 +3,9 @@ import styles from "./Hero.module.css";
 
 export default function Hero() {
   return (
-    <div>
+    <>
       <Header />
-      <div className="relative">
+      <div>
         <div className={`w-full lg:w-1/2 z-20 relative ${styles.asymmetric}`}>
           <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
             <svg
@@ -32,8 +32,8 @@ export default function Hero() {
               </defs>
             </svg>
           </div>
-          <div className="relative z-10 pt-14 lg:w-full lg:max-w-3xl mx-auto lg:pl-24">
-            <div className="relative py-32 px-6 sm:py-40 lg:py-56 lg:px-8 lg:pr-0">
+          <div className="z-10 pt-14 lg:max-w-3xl mx-auto lg:pl-24">
+            <div className="py-32 px-6 sm:py-40 lg:py-56 lg:px-8 lg:pr-0">
               <div className="mx-auto max-w-2xl text-center lg:text-left">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                   Ozlem Sen Creative Agency
@@ -49,7 +49,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-50 hidden lg:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <div className="bg-gray-50 hidden lg:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <img
             className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
             src="images/hero.jpg"
@@ -57,6 +57,6 @@ export default function Hero() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }

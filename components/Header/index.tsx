@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { navigation } from "../Social";
 
@@ -26,12 +27,17 @@ const links = [
 ];
 
 export default function Header() {
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl">
-        <div className="px-6 pt-6 lg:max-w-2xl lg:pl-8 lg:pr-0">
+        <div
+          className={`px-6 pt-6 ${
+            router.pathname === "/" ? "max-w-2xl lg:pr-0" : "lg:pr-10"
+          } lg:pl-8 `}
+        >
           <nav
             className="flex items-center justify-between"
             aria-label="Global"
@@ -58,7 +64,7 @@ export default function Header() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-base font-medium text-gray-500 hover:text-gray-900"
+                  className="text-base font-medium text-gray-500 hover:text-indigo-600"
                 >
                   {link.name}
                 </Link>

@@ -3,15 +3,9 @@ import { Layout } from "../components/Layout";
 import { useAppSizeConfig } from "../hooks/useAppSizeConfig";
 
 export default function About() {
-  const { wHeight, wWidth, footerHeight, headerHeight } = useAppSizeConfig();
   return (
     <Layout>
-      <section
-        style={{
-          height: wWidth < 600 ? "auto" : wHeight - footerHeight - headerHeight,
-        }}
-        className="pb-8"
-      >
+      <section>
         <div className="relative bg-white flex lg:h-5/6">
           <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center">
             <div className="relative sm:py-16 lg:py-0 h-full">
@@ -70,7 +64,7 @@ export default function About() {
 
             <div className="relative mx-auto max-w-md px-6 sm:max-w-3xl lg:px-0">
               {/* Content area */}
-              <div className="pt-12 sm:pt-16 lg:pt-20">
+              <div className="pt-12">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                   Über uns
                 </h2>

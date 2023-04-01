@@ -6,28 +6,46 @@ import { Layout } from "../components/Layout";
 import { useAppSizeConfig } from "../hooks/useAppSizeConfig";
 import { navigation } from "../components/Social";
 import Link from "next/link";
+import { Formik, Form, Field } from "formik";
+
+import { object, string } from "yup";
+
+const validationSchema = object({
+  name: string().required(),
+  email: string()
+    .email()
+    .when("phone", {
+      is: "",
+      then: (schema) =>
+        schema.required(
+          "Bitte geben Sie entweder Ihre Telefonnummer oder E-Mail-Adresse ein, damit wir Sie kontaktieren können."
+        ),
+    }),
+  phone: string(),
+  message: string().required("Bitte geben Sie Ihre Nachricht ein."),
+});
 
 type FormValues = {
   name: string;
-  firma: string;
   email: string;
   phone: string;
   message: string;
-  acceptedTerms: boolean;
 };
 
 const initialValues = {
   name: "",
-  firma: "",
   email: "",
   phone: "",
-  message: "string",
-  acceptedTerms: false,
+  message: "",
+};
+
+const CLASS = {
+  default: "border-gray-300  focus:border-indigo-500 focus:ring-indigo-500",
+  error: "border-red-400  focus:border-red-500 focus:ring-red-600",
 };
 
 export default function Contact() {
   const [formValues, setFormValues] = useState<FormValues>(initialValues);
-  const { wHeight, wWidth, headerHeight } = useAppSizeConfig();
   const router = useRouter();
 
   useEffect(() => {
@@ -41,15 +59,26 @@ export default function Contact() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
+  const handleSubmit = async (values: FormValues) => {
+    const res = await fetch("/api/sendgrid", {
+      body: JSON.stringify(formValues),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   return (
     <Layout>
-      <section
-        style={{
-          height: wWidth < 600 ? "auto" : wHeight - headerHeight,
-        }}
-        className="pb-8"
-      >
-        <div className="relative bg-white flex lg:h-5/6">
+      <section>
+        <div className="mt-6 relative bg-white flex lg:h-5/6">
           <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center">
             <div className="relative sm:py-16 lg:py-0 h-full">
               <div
@@ -103,7 +132,10 @@ export default function Contact() {
                     Wir nehmen uns die Zeit. Rufen Sie an oder schreiben Sie uns
                   </h2>
                   <div className="mt-8 text-gray-500">
-                    <Link href="tel:+491778094979" className="hover:underline ">
+                    <Link
+                      href="tel:+491778094979"
+                      className="hover:underline hover:text-gray-700"
+                    >
                       <>
                         <span className="sr-only">Phone number</span>
                         <span className="flex text-base">
@@ -116,7 +148,7 @@ export default function Contact() {
                       </>
                     </Link>
                     <Link
-                      className="hover:underline "
+                      className="hover:underline hover:text-gray-700"
                       href="mailto:benozlemsen@gmail.com"
                       target="_blank"
                       rel="noreferrer"
@@ -157,103 +189,118 @@ export default function Contact() {
                 <h3 className="text-lg font-medium text-gray-500 text-center">
                   Kontakt Formular
                 </h3>
-                <form action="#" method="POST" className="space-y-4 mt-4">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Name
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="company"
-                        id="company"
-                        autoComplete="organization"
-                        className="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Firma
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="company"
-                        id="company"
-                        autoComplete="organization"
-                        className="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Email
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        className="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="phone-number"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Telefon
-                    </label>
-                    <div className="relative mt-1 rounded-md shadow-sm">
-                      <input
-                        type="text"
-                        name="phone-number"
-                        id="phone-number"
-                        autoComplete="tel"
-                        className="block w-full rounded-md border-gray-300 py-3 px-4  focus:border-indigo-500 focus:ring-indigo-500"
-                        placeholder="+49 (1xx) xxx-xxxx"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Nachricht
-                    </label>
-                    <div className="mt-1">
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formValues.message}
-                        rows={3}
-                        className="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                        defaultValue={""}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <button
-                      type="submit"
-                      className="block w-full rounded-md bg-gradient-to-r from-teal-500 to-cyan-600 py-3 px-4 font-medium text-white shadow hover:from-teal-600 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900"
-                    >
-                      Absenden
-                    </button>
-                  </div>
-                </form>
+                <Formik
+                  initialValues={{ ...formValues }}
+                  onSubmit={handleSubmit}
+                  validationSchema={validationSchema}
+                  enableReinitialize
+                >
+                  {({ errors, touched }) => (
+                    <Form className="space-y-4 mt-4">
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Name / Firma
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            type="text"
+                            name="name"
+                            id="name"
+                            autoComplete="name"
+                            className={`block w-full rounded-md py-3 px-4 shadow-sm ${
+                              errors.name ? CLASS.error : CLASS.default
+                            }`}
+                          />
+                        </div>
+                        <span className="text-sm text-red-400">
+                          {errors.name}
+                        </span>
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Email
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            id="email"
+                            name="email"
+                            type="email"
+                            autoComplete="email"
+                            className={`block w-full rounded-md py-3 px-4 shadow-sm ${
+                              errors.email ? CLASS.error : CLASS.default
+                            }`}
+                          />
+                        </div>
+                        <span className="text-sm text-red-400">
+                          {errors.email}
+                        </span>
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="phone-number"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Telefon
+                        </label>
+                        <div className="relative mt-1 rounded-md shadow-sm">
+                          <Field
+                            type="text"
+                            name="phone-number"
+                            id="phone-number"
+                            autoComplete="tel"
+                            className={`block w-full rounded-md py-3 px-4 shadow-sm ${
+                              errors.phone ? CLASS.error : CLASS.default
+                            }`}
+                            placeholder="+49 (1xx) xxx-xxxx"
+                          />
+                        </div>
+                        <span className="text-sm text-red-400">
+                          {errors.phone}
+                        </span>
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="message"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Nachricht
+                        </label>
+                        <div className="mt-1">
+                          <Field
+                            as="textarea"
+                            id="message"
+                            name="message"
+                            rows={3}
+                            className={`block w-full rounded-md py-3 px-4 shadow-sm ${
+                              touched.message && errors.message
+                                ? CLASS.error
+                                : CLASS.default
+                            }`}
+                          />
+                        </div>
+                        <span className="text-sm text-red-400">
+                          {touched.message && errors.message
+                            ? errors.message
+                            : ""}
+                        </span>
+                      </div>
+                      <div>
+                        <button
+                          type="submit"
+                          className="block w-full rounded-md bg-gradient-to-r from-indigo-400 to-indigo-500 py-3 px-4 font-medium text-white shadow hover:from-indigo-500 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                        >
+                          Absenden
+                        </button>
+                      </div>
+                    </Form>
+                  )}
+                </Formik>
               </div>
             </div>
           </div>

@@ -76,9 +76,11 @@ export const services = [
 export default function Services() {
   return (
     <Layout>
-      {services.map((service, i) => (
-        <ServiceSection key={service.id} {...service} />
-      ))}
+      <div className="py-6">
+        {services.map((service, i) => (
+          <ServiceSection key={service.id} {...service} index={i} />
+        ))}
+      </div>
     </Layout>
   );
 }

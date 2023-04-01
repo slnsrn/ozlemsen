@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 
 import { Layout } from "../components/Layout";
-import { useAppSizeConfig } from "../hooks/useAppSizeConfig";
 import { navigation } from "../components/Social";
 import Link from "next/link";
 import { Formik, Form, Field } from "formik";

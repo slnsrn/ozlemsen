@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
 
-import { useAppSizeConfig } from "../../hooks/useAppSizeConfig";
-
 const packageNames = {
   basic: "Basic",
   standart: "Standart",
@@ -106,14 +104,8 @@ export const ServiceSection = ({
   id: string;
   index: number;
 }) => {
-  const { wHeight, wWidth } = useAppSizeConfig();
-
   return (
-    <section
-      id={id}
-      style={{ minHeight: wWidth < 600 ? "auto" : wHeight }}
-      className="pb-8"
-    >
+    <section id={id} className="pb-8">
       <div className="relative bg-white flex lg:h-5/6 ">
         <div
           className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full"

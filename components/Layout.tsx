@@ -1,4 +1,3 @@
-import { useAppSizeConfig } from "../hooks/useAppSizeConfig";
 import Header from "./Header";
 import Social from "./Social";
 

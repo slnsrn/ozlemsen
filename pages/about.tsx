@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Layout } from "../components/Layout";
-import { useAppSizeConfig } from "../hooks/useAppSizeConfig";
 
 export default function About() {
   return (

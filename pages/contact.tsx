@@ -1,61 +1,10 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 
 import { Layout } from "../components/Layout";
 import { navigation } from "../components/Social";
 import Link from "next/link";
-import { object, string } from "yup";
-
-const validationSchema = object({
-  name: string().required(),
-  email: string()
-    .email()
-    .when("phone", {
-      is: "",
-      then: (schema) =>
-        schema.required(
-          "Bitte geben Sie entweder Ihre Telefonnummer oder E-Mail-Adresse ein, damit wir Sie kontaktieren können."
-        ),
-    }),
-  phone: string(),
-  message: string().required("Bitte geben Sie Ihre Nachricht ein."),
-});
-
-type FormValues = {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-};
-
-const initialValues = {
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
-};
-
-const CLASS = {
-  default: "border-gray-300  focus:border-indigo-500 focus:ring-indigo-500",
-  error: "border-red-400  focus:border-red-500 focus:ring-red-600",
-};
 
 export default function Contact() {
-  const [formValues, setFormValues] = useState<FormValues>(initialValues);
-  const router = useRouter();
-
-  useEffect(() => {
-    const product = router.query?.product;
-    const offer = router.query?.package;
-    const message =
-      product && offer
-        ? `I would like to get information about ${product} ${offer} package`
-        : "";
-    setFormValues({ ...formValues, message });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router]);
-
   return (
     <Layout>
       <section>

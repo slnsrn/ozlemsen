@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "../Header";
 import styles from "./Hero.module.css";
 
@@ -50,10 +51,12 @@ export default function Hero() {
           </div>
         </div>
         <div className="bg-gray-50 hidden lg:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <img
+          <Image
             className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
             src="images/hero.jpg"
             alt=""
+            width={1000}
+            height={1000}
           />
         </div>
       </div>

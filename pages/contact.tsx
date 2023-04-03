@@ -5,8 +5,6 @@ import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { Layout } from "../components/Layout";
 import { navigation } from "../components/Social";
 import Link from "next/link";
-// import { Formik, Form, Field } from "formik";
-
 import { object, string } from "yup";
 
 const validationSchema = object({
@@ -58,27 +56,10 @@ export default function Contact() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
-  const handleSubmit = async (values: FormValues) => {
-    const res = await fetch("/api/sendgrid", {
-      body: JSON.stringify(formValues),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-
-    const { error } = await res.json();
-    if (error) {
-      console.log(error);
-      return;
-    }
-  };
-
   return (
     <Layout>
       <section>
         <div className="mt-6 relative bg-white flex lg:h-5/6">
-          {/* <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center"> */}
           <div className="lg:mx-auto lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center">
             <div className="relative sm:py-16 lg:py-0 h-full">
               <div
@@ -165,7 +146,7 @@ export default function Contact() {
                       </>
                     </Link>
                   </div>
-                  <div className="flex space-x-6 mt-8">
+                  <div className="hidden lg:flex space-x-6 mt-8">
                     {navigation.map((item) => (
                       <a
                         target="_blank"
@@ -182,126 +163,6 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
-            {/* <div className="relative max-w-md px-6 sm:max-w-3xl lg:px-0">
-              <div className="pt-6 lg:pt-0">
-                <h3 className="text-lg font-medium text-gray-500 text-center">
-                  Kontakt Formular
-                </h3>
-                <Formik
-                  initialValues={{ ...formValues }}
-                  onSubmit={handleSubmit}
-                  validationSchema={validationSchema}
-                  enableReinitialize
-                >
-                  {({ errors, touched }) => (
-                    <Form className="space-y-4 mt-4">
-                      <div>
-                        <label
-                          htmlFor="name"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Name / Firma
-                        </label>
-                        <div className="mt-1">
-                          <Field
-                            type="text"
-                            name="name"
-                            id="name"
-                            autoComplete="name"
-                            className={`block w-full rounded-md py-3 px-4 shadow-sm ${
-                              errors.name ? CLASS.error : CLASS.default
-                            }`}
-                          />
-                        </div>
-                        <span className="text-sm text-red-400">
-                          {errors.name}
-                        </span>
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Email
-                        </label>
-                        <div className="mt-1">
-                          <Field
-                            id="email"
-                            name="email"
-                            type="email"
-                            autoComplete="email"
-                            className={`block w-full rounded-md py-3 px-4 shadow-sm ${
-                              errors.email ? CLASS.error : CLASS.default
-                            }`}
-                          />
-                        </div>
-                        <span className="text-sm text-red-400">
-                          {errors.email}
-                        </span>
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="phone-number"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Telefon
-                        </label>
-                        <div className="relative mt-1 rounded-md shadow-sm">
-                          <Field
-                            type="text"
-                            name="phone-number"
-                            id="phone-number"
-                            autoComplete="tel"
-                            className={`block w-full rounded-md py-3 px-4 shadow-sm ${
-                              errors.phone ? CLASS.error : CLASS.default
-                            }`}
-                            placeholder="+49 (1xx) xxx-xxxx"
-                          />
-                        </div>
-                        <span className="text-sm text-red-400">
-                          {errors.phone}
-                        </span>
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="message"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Nachricht
-                        </label>
-                        <div className="mt-1">
-                          <Field
-                            as="textarea"
-                            id="message"
-                            name="message"
-                            rows={3}
-                            className={`block w-full rounded-md py-3 px-4 shadow-sm ${
-                              touched.message && errors.message
-                                ? CLASS.error
-                                : CLASS.default
-                            }`}
-                          />
-                        </div>
-                        <span className="text-sm text-red-400">
-                          {touched.message && errors.message
-                            ? errors.message
-                            : ""}
-                        </span>
-                      </div>
-                      <div>
-                        <button
-                          type="submit"
-                          className="block w-full rounded-md bg-gradient-to-r from-indigo-400 to-indigo-500 py-3 px-4 font-medium text-white shadow hover:from-indigo-500 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-gray-900"
-                        >
-                          Absenden
-                        </button>
-                      </div>
-                    </Form>
-                  )}
-                </Formik>
-              </div>
-            </div> */}
           </div>
         </div>
       </section>

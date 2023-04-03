@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <>
       <Header />
-      <div>
+      <div className="relative">
         <div className={`w-full lg:w-1/2 z-20 relative ${styles.asymmetric}`}>
           <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
             <svg
@@ -36,10 +36,10 @@ export default function Hero() {
           <div className="z-10 pt-14 lg:max-w-3xl mx-auto lg:pl-24">
             <div className="py-32 px-6 sm:py-40 lg:py-56 lg:px-8 lg:pr-0">
               <div className="mx-auto max-w-2xl text-center lg:text-left">
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                <h1 className="text-4xl font-bold tracking-tight text-gray-800 sm:text-6xl">
                   Ozlem Sen Creative Agency
                 </h1>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
+                <p className="mt-6 text-lg leading-8 text-gray-700">
                   Eine kreative Einzelunternehmerin mit einer Leidenschaft für
                   Social Media Management, Branding und Videoproduktion. Ich
                   helfe kleinen und mittelständischen Unternehmen, ihre Marke zu
@@ -50,7 +50,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-50 hidden lg:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <div className="bg-gray-50 absolute top-0 opacity-40 lg:opacity-100 lg:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <Image
             className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
             src="images/hero.jpg"

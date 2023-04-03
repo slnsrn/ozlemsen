@@ -1,8 +1,10 @@
 {
-    "cSpell.words": [
-        "duzzle"
-    ],
-    "i18n-ally.localesPaths": [
-        "public/locales"
-    ]
+  "cSpell.words": [
+    "duzzle"
+  ],
+  "i18n-ally.localesPaths": [
+    "public/locales"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

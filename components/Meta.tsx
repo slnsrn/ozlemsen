@@ -3,8 +3,8 @@ import Head from "next/head";
 export function Meta() {
   return (
     <Head>
-      <title>Özlem Şen Kreativ Agency</title>
-      <meta name="description" content="Your daily puzzle" />
+      <title>Özlem Şen KreativAgentur</title>
+      <meta name="description" content="deine KreativAgentur" />
       <link rel="icon" href="/favicon.ico" />
       <link
         rel="apple-touch-icon"

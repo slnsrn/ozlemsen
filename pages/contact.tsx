@@ -8,16 +8,16 @@ export default function Contact() {
   return (
     <Layout>
       <section>
-        <div className="mt-6 relative bg-white flex lg:h-5/6">
+        <div className="mt-6 relative flex lg:h-5/6">
           <div className="lg:mx-auto lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full self-center">
             <div className="relative sm:py-16 lg:py-0 h-full">
               <div
                 aria-hidden="true"
                 className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
               >
-                <div className="absolute inset-y-0 right-1/2 w-full rounded-r-3xl bg-gray-50 lg:right-72" />
+                <div className="absolute inset-y-0 right-1/2 w-full rounded-r-3xl lg:right-72" />
                 <svg
-                  className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
+                  className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-10"
                   width={404}
                   height={392}
                   fill="none"
@@ -37,7 +37,7 @@ export default function Contact() {
                         y={0}
                         width={4}
                         height={4}
-                        className="text-gray-200"
+                        className="text-background"
                         fill="currentColor"
                       />
                     </pattern>
@@ -54,8 +54,8 @@ export default function Contact() {
                   Contact us
                 </h2>
                 {/* Contact information */}
-                <div className="relative overflow-hidden bg-gradient-to-r from-stone-100 to-stone-200  shadow-xl h-full p-6 lg:p-12">
-                  <p className="my-4 text-xl leading-6 text-gray-500">
+                <div className="relative overflow-hidden bg-gradient-to-r from-stone-100 to-yellow-100  shadow-xl h-full p-6 lg:p-12">
+                  <p className="my-4 text-xl leading-6 text-cyan-600">
                     Fragen? Lust? Dringende Deadline?
                   </p>
                   <h2 className="text-2xl font-bold tracking-tight text-gray-700">

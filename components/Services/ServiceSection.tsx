@@ -13,7 +13,7 @@ const RightBG = () => (
     aria-hidden="true"
     className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
   >
-    <div className="absolute inset-y-0 right-1/2 w-full rounded-r-3xl bg-gray-50 lg:right-72" />
+    <div className="absolute inset-y-0 right-1/2 w-full rounded-r-3xl lg:right-72" />
     <svg
       className="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
       width={404}
@@ -35,7 +35,7 @@ const RightBG = () => (
             y={0}
             width={4}
             height={4}
-            className="text-gray-200"
+            className="text-background"
             fill="currentColor"
           />
         </pattern>
@@ -53,9 +53,9 @@ const LeftBG = () => (
     aria-hidden="true"
     className="hidden sm:block lg:absolute lg:inset-y-0 lg:left-0 lg:w-screen"
   >
-    <div className="absolute inset-y-0 right-1/2 w-full rounded-l-3xl bg-gray-50 lg:-right-72" />
+    <div className="absolute inset-y-0 right-1/2 w-full rounded-l-3xl lg:-right-72" />
     <svg
-      className="absolute top-8 right-1/2 -ml-3 lg:right-[72rem]  lg:top-12"
+      className="absolute top-8 -right-3 lg:right-[49rem] xl:right-[71rem] lg:top-12"
       width={404}
       height={392}
       fill="none"
@@ -75,7 +75,7 @@ const LeftBG = () => (
             y={0}
             width={4}
             height={4}
-            className="text-gray-200"
+            className="text-background"
             fill="currentColor"
           />
         </pattern>
@@ -106,7 +106,7 @@ export const ServiceSection = ({
 }) => {
   return (
     <section id={id} className="pb-8">
-      <div className="relative bg-white flex lg:h-5/6 ">
+      <div className="relative flex lg:h-5/6 ">
         <div
           className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8 h-full"
           style={index === 1 ? { direction: "rtl" } : {}}
@@ -128,11 +128,11 @@ export const ServiceSection = ({
           <div className="relative h-full mx-auto max-w-md px-6 sm:max-w-3xl lg:px-0 flex">
             {/* Content area */}
             <div className="flex-col w-full pt-6 lg:pt-0 text-center lg:text-left self-center">
-              <h2 className="text-2xl font-bold tracking-tight text-gray-700 sm:text-3xl">
+              <h2 className="text-lg tracking-wide text-cyan-600 sm:text-2xl">
                 {title}
               </h2>
-              <div className="mt-4 space-y-6 text-gray-500">
-                <p className="text-lg">{text}</p>
+              <div className="mt-4 space-y-6 text-gray-100">
+                <p className="text-sm">{text}</p>
                 <div className="space-y-4">
                   {["basic", "standart", "premium"].map((p, i) => (
                     <div
@@ -147,12 +147,12 @@ export const ServiceSection = ({
                         }}
                         className="flex space-x-2 items-center flex-row-reverse"
                       >
-                        <h6 className="font-bold  hover:text-indigo-500">
+                        <h6 className=" text-primary hover:font-bold">
                           {packageNames[p as "basic"]}
                         </h6>
-                        <ChevronDoubleRightIcon className="h-4 self-center hover:text-indigo-500" />
+                        <ChevronDoubleRightIcon className="h-4 self-center  text-primary hover:font-bold" />
                       </Link>
-                      <ol>
+                      <ol className="font-light text-sm">
                         {offers[p as "basic"].map((item, i) => (
                           <li key={i}>{item}</li>
                         ))}

@@ -57,14 +57,14 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              <Bars3Icon className="h-6 w-6 text-white" aria-hidden="true" />
             </button>
             <div className="hidden justify-center items-center lg:flex lg:gap-x-14">
               {links.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-base font-medium text-gray-500 hover:text-indigo-600"
+                  className="text-cyan-500 tracking-wide hover:text-gray-200 hover:underline"
                 >
                   {link.name}
                 </Link>
@@ -79,21 +79,14 @@ export default function Header() {
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
       >
-        <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div className="fixed inset-0 z-50 bg-background-dark" />
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <Link href="/" passHref>
-              <span className="sr-only">OzlemSen.creativeAgency</span>
-              <Image
-                src="/logo/logo.png"
-                alt=""
-                width={120}
-                height={30}
-              ></Image>
-            </Link>
+            <span className="sr-only">OzlemSen.creativeAgency</span>
+            <Image src="/logo/logo.png" alt="" width={120} height={30}></Image>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 text-white ring-0"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
@@ -101,35 +94,38 @@ export default function Header() {
             </button>
           </div>
           <div className="mt-10 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
+            <div className="-my-6 divide-y divide-gray-100">
               <div className="space-y-2 py-4">
                 <Link
                   href="/services"
-                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-white hover:underline"
                 >
                   Leistungen
                 </Link>
                 <Link
                   href="/about"
-                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-white hover:underline"
                 >
                   Über uns
                 </Link>
               </div>
               <div className="flex flex-col gap-6 mt-2 pt-2">
-                <div className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                <div className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-white hover:underline">
                   Kontakt
                 </div>
-                <div className="text-gray-500">
+                <div className="text-gray-50">
                   <Link href="tel:+491778094979" className="hover:underline ">
                     <>
                       <span className="sr-only">Phone number</span>
                       <span className="flex text-base">
                         <PhoneIcon
-                          className="h-6 w-6 flex-shrink-0"
+                          className="h-6 w-6 flex-shrink-0 text-white"
                           aria-hidden="true"
                         />
-                        <span className="ml-3"> +49 177 809 49 79</span>
+                        <span className="ml-3 text-white">
+                          {" "}
+                          +49 177 809 49 79
+                        </span>
                       </span>
                     </>
                   </Link>
@@ -141,12 +137,14 @@ export default function Header() {
                   >
                     <>
                       <span className="sr-only">Email</span>
-                      <span className="mt-6 flex text-base">
+                      <span className="mt-6 flex text-base text-white">
                         <EnvelopeIcon
                           className="h-6 w-6 flex-shrink-0"
                           aria-hidden="true"
                         />
-                        <span className="ml-3">benozlemsen@gmail.com</span>
+                        <span className="ml-3 text-white">
+                          benozlemsen@gmail.com
+                        </span>
                       </span>
                     </>
                   </Link>
@@ -158,7 +156,7 @@ export default function Header() {
                       rel="noreferrer"
                       key={item.name}
                       href={item.href}
-                      className="text-gray-400 hover:text-gray-500"
+                      className="text-gray-100 hover:text-gray-400"
                     >
                       <span className="sr-only">{item.name}</span>
                       <item.icon className="h-6 w-6" aria-hidden="true" />
